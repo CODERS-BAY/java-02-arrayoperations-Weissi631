@@ -41,25 +41,31 @@ public class ArrayOperations {
 	 *      href="sorting algortihms">http://faculty.cs.niu.edu/~hutchins/csci241/sorting.htm</a>
 	 */
 	public int[] sort() {
-		boolean sorted = false;
 		int temp = 0;
-		while (!sorted) {
-			for (int i = 0; i < numbers.length; i++) {
-				if (numbers[i] > numbers[i] +1)
-					temp = numbers[i];
-					numbers[i] = numbers[i+1];
-					numbers[i+1] = temp;.
-					sorted = false;
+		for (int i = 0; i < unsorted.length; i++) {
+			for (int j = 1; j < unsorted.length; j++) {
+				if (unsorted[j-1] > unsorted[j]) {
+					temp = unsorted[j-1];
+					unsorted[j-1] = unsorted[j];
+					unsorted[j] = temp;
+				}
 			}
 		}
-		return null;
+		return unsorted;
 	}
 
 	/**
 	 * @return the sorted array in reverse order
 	 */
 	public int[] revertSort() {
-		return null;
+		int [] reverseSort = new int[numbers.length];
+		int j = numbers.length - 1;
+		for (int i = 0 ; i < numbers.length; i++) {
+			reverseSort[j] = numbers[i];
+			j = j - 1;
+			
+		}
+		return reverseSort;
 	}
 
 	/**
@@ -80,6 +86,11 @@ public class ArrayOperations {
 	 * @return true if the array contains the value, false otherwise.
 	 */
 	public boolean contains(int value) {
+		for (int i = 0; i < numbers.length; i++) {
+			if (value == numbers[i]) {
+				return true;
+			}
+		}
 		return false;
 	}
 
